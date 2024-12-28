@@ -28,4 +28,26 @@ class Course {
     required this.topics,
     required this.totalQuestions,
   });
+
+  factory Course.fromJson(Map<String, dynamic> json) {
+    return Course(
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      imageUrl: json['image_url'] ?? '',
+      topics: List<String>.from(json['topics'] ?? []),
+      totalQuestions: json['total_questions'] ?? 0,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'image_url': imageUrl,
+      'topics': topics,
+      'total_questions': totalQuestions,
+    };
+  }
 }

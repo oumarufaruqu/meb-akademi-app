@@ -51,6 +51,7 @@ dependencies:
   # Network
   dio: ^5.4.0
   connectivity_plus: ^5.0.2
+  supabase_flutter: ^2.0.2
 
   # Utils
   logger: ^2.0.2+1
