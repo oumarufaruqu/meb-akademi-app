@@ -38,7 +38,7 @@ dependencies:
   # UI Components
   google_fonts: ^6.1.0
   flutter_svg: ^2.0.9
-  cached_network_image: ^3.3.0
+  cached_network_image: ^3.4.1
 
   # Navigation
   go_router: ^13.0.0
@@ -56,6 +56,9 @@ dependencies:
   logger: ^2.0.2+1
   intl: ^0.19.0
   cupertino_icons: ^1.0.8
+  confetti: ^0.8.0
+  tutorial_coach_mark: ^1.2.12
+  flutter_card_swiper: ^7.0.2
 
 dev_dependencies:
   flutter_test:

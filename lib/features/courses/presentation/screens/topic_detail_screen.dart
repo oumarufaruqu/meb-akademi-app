@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meb_akademi_app/features/courses/domain/models/topic_model.dart';
+import 'package:meb_akademi_app/features/courses/domain/models/subtopic_model.dart';
+import 'package:meb_akademi_app/features/courses/presentation/screens/subtopic_cards_screen.dart';
 
 class TopicDetailScreen extends ConsumerWidget {
   final Topic topic;
@@ -9,6 +11,65 @@ class TopicDetailScreen extends ConsumerWidget {
     super.key,
     required this.topic,
   });
+
+  // Örnek alt konu kartları oluştur
+  List<SubTopic> _createSampleSubTopics(String title) {
+    return [
+      SubTopic(
+        id: '1',
+        title: '$title - Giriş',
+        content: 'Bu bölümde konunun temel kavramlarını öğreneceğiz.',
+        bulletPoints: [
+          'Temel tanımlar',
+          'Konunun önemi',
+          'Günlük hayattaki yeri',
+        ],
+      ),
+      SubTopic(
+        id: '2',
+        title: '$title - Temel Kavramlar',
+        content: 'Konuyla ilgili bilmemiz gereken temel kavramları inceleyelim.',
+        imageUrl: 'https://picsum.photos/seed/math1/400/300',
+        bulletPoints: [
+          'Kavram 1 ve açıklaması',
+          'Kavram 2 ve açıklaması',
+          'Kavramlar arası ilişkiler',
+        ],
+      ),
+      SubTopic(
+        id: '3',
+        title: '$title - Örnekler',
+        content: 'Şimdi öğrendiklerimizi örnekler üzerinde pekiştirelim.',
+        imageUrl: 'https://picsum.photos/seed/math2/400/300',
+        bulletPoints: [
+          'Örnek 1: Temel seviye uygulama',
+          'Örnek 2: Orta seviye uygulama',
+          'Örnek 3: İleri seviye uygulama',
+        ],
+      ),
+      SubTopic(
+        id: '4',
+        title: '$title - Problemler',
+        content: 'Bu bölümde çözümlü problemleri inceleyeceğiz.',
+        bulletPoints: [
+          'Problem çözme stratejileri',
+          'Çözümlü örnek problemler',
+          'Dikkat edilmesi gereken noktalar',
+        ],
+      ),
+      SubTopic(
+        id: '5',
+        title: '$title - Özet',
+        content: 'Öğrendiklerimizi özetleyelim ve tekrar edelim.',
+        imageUrl: 'https://picsum.photos/seed/math3/400/300',
+        bulletPoints: [
+          'Önemli noktaların özeti',
+          'Formüller ve kurallar',
+          'Sık yapılan hatalar',
+        ],
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -94,7 +155,15 @@ class TopicDetailScreen extends ConsumerWidget {
                     title: Text(topic.subTopics[index]),
                     trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                     onTap: () {
-                      // TODO: Alt konuya git
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SubTopicCardsScreen(
+                            topicTitle: topic.subTopics[index],
+                            subTopics: _createSampleSubTopics(topic.subTopics[index]),
+                          ),
+                        ),
+                      );
                     },
                   );
                 },
